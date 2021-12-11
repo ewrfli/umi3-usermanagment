@@ -4,8 +4,8 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { path: '/', component: '@/pages/index' },
-  ],
+  // routes: [ 手动式路由注释掉 成约定式路由
+  //   { path: '/', component: '@/pages/index' },
+  // ],
   fastRefresh: {},
 });
