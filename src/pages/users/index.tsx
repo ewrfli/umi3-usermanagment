@@ -57,7 +57,7 @@ const index = ({users}) => {
   
   return (
     <div className='lest-table'>
-      <Table columns={columns} dataSource={users} />
+      <Table columns={columns} dataSource={users.length ? users : []} />
     </div>
   );
 };

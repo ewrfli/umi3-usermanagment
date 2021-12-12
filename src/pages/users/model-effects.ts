@@ -1,5 +1,4 @@
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
-import { getRemoteList } from './service'
 interface UserModelType {
   namespace: string,
   state: {},
@@ -29,10 +28,31 @@ const UserModel: UserModelType = {
     //   //yield put()
     // }
 
-    *getRemote(action, { put, call }){ //effects=>(put ,call)
+    *getRemote(action, { put }){ //effects=>(put ,call)
+      const data = [
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+      ];
 
-      const data = yield call(getRemoteList);//后端接口
-      console.log(data)
       yield put({
         type: 'getList',
         payload: data,
