@@ -31,8 +31,8 @@ const UserModel: UserModelType = {
 
     *getRemote(action, { put, call }){ //effects=>(put ,call)
 
-      const data = yield call(getRemoteList);//后端接口
-      console.log(data)
+      const { data } = yield call(getRemoteList);//后端接口 把data解构出来
+      console.log('effects,getRemote',data)
       yield put({
         type: 'getList',
         payload: data,

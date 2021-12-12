@@ -48,7 +48,7 @@ const index = ({users}) => {
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
-          <a>Invite {record.name}</a>
+          <a>Edit</a>
           <a>Delete</a>
         </Space>
       ),
