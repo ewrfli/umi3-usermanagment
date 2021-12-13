@@ -63,14 +63,19 @@ const index = ({users}) => {
   ];
   
 
-  const visbleHandler = () => {
+  const visbleHandler = () => { // hook: modalVisible
     setModalVisible(true);
   }
-
+  const handleOk = () => {
+    setModalVisible(false);
+  }
+  const handleCancel = () => {
+    setModalVisible(false);
+  }
   return (
     <div className='lest-table'>
       <Table columns={columns} dataSource={users.length ? users : []} />
-      <UserModal visible={modalVisible}></UserModal>
+      <UserModal visible={modalVisible} handleOk={handleOk} handleCancel={handleCancel}></UserModal>
     </div>
     
   );
