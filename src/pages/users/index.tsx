@@ -1,7 +1,8 @@
 // @flow 
 import * as React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space  } from 'antd';
 import { connect } from 'umi';
+import UserModal from './components/UserModal'
 type Props = {
   
 };
@@ -58,7 +59,9 @@ const index = ({users}) => {
   return (
     <div className='lest-table'>
       <Table columns={columns} dataSource={users.length ? users : []} />
+      <UserModal></UserModal>
     </div>
+    
   );
 };
 
