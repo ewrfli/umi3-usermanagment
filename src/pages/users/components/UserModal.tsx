@@ -19,9 +19,7 @@ const UserModal = (props) => { //props是只读
   return (
     <>
       <Modal title="Basic Modal" visible={props.visible} onOk={props.handleOk} onCancel={props.handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <p>{JSON.stringify(props.record)}</p>
       </Modal>
     </>
   );

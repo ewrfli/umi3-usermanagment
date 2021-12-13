@@ -9,7 +9,7 @@ type Props = {
 const index = ({users}) => {
 
   const [modalVisible, setModalVisible] = useState(false)
-
+  const [record, setRecord] = useState(undefined)
 
   const columns = [
     {
@@ -54,7 +54,7 @@ const index = ({users}) => {
       render: (text, record) => (
         <Space size="middle">
           <a onClick={ ()=> {
-            setModalVisible(true);
+            editeHandler(record);
           }}>Edit</a>
           <a>Delete</a>
         </Space>
@@ -63,8 +63,10 @@ const index = ({users}) => {
   ];
   
 
-  const visbleHandler = () => { // hook: modalVisible
+  const editeHandler = (record) => { // hook: modalVisible
     setModalVisible(true);
+    console.log(record)
+    setRecord(record);
   }
   const handleOk = () => {
     setModalVisible(false);
@@ -72,10 +74,11 @@ const index = ({users}) => {
   const handleCancel = () => {
     setModalVisible(false);
   }
+ 
   return (
     <div className='lest-table'>
       <Table columns={columns} dataSource={users.length ? users : []} />
-      <UserModal visible={modalVisible} handleOk={handleOk} handleCancel={handleCancel}></UserModal>
+      <UserModal visible={modalVisible} handleOk={handleOk} handleCancel={handleCancel} record={record}></UserModal>
     </div>
     
   );
