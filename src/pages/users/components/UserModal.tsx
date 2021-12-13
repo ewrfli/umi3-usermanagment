@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 
-const UserModal = () => {
+const UserModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(true);
 
   const showModal = () => {
@@ -18,7 +18,7 @@ const UserModal = () => {
 
   return (
     <>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Basic Modal" visible={props.visible} onOk={handleOk} onCancel={handleCancel}>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>

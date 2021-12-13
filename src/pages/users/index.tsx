@@ -1,5 +1,5 @@
 // @flow 
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Table, Tag, Space  } from 'antd';
 import { connect } from 'umi';
 import UserModal from './components/UserModal'
@@ -7,6 +7,10 @@ type Props = {
   
 };
 const index = ({users}) => {
+
+  const [modalVisible, setModalVisible] = useState(false)
+
+
   const columns = [
     {
       title: 'Name',
@@ -49,17 +53,24 @@ const index = ({users}) => {
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
-          <a>Edit</a>
+          <a onClick={ ()=> {
+            setModalVisible(true);
+          }}>Edit</a>
           <a>Delete</a>
         </Space>
       ),
     },
   ];
   
+
+  const visbleHandler = () => {
+    setModalVisible(true);
+  }
+
   return (
     <div className='lest-table'>
       <Table columns={columns} dataSource={users.length ? users : []} />
-      <UserModal></UserModal>
+      <UserModal visible={modalVisible}></UserModal>
     </div>
     
   );
