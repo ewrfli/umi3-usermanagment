@@ -77,7 +77,7 @@ const index = ({users}) => {
  
   return (
     <div className='lest-table'>
-      <Table columns={columns} dataSource={users.length ? users : []} />
+      <Table columns={columns} dataSource={users.length ? users : []} rowKey='key' />
       <UserModal visible={modalVisible} handleOk={handleOk} handleCancel={handleCancel} record={record}></UserModal>
     </div>
     
