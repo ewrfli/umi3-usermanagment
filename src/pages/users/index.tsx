@@ -6,7 +6,7 @@ import UserModal from './components/UserModal'
 type Props = {
   
 };
-const index = ({users}) => {
+const index = ({users, dispatch}) => {
 
   const [modalVisible, setModalVisible] = useState(false)
   const [record, setRecord] = useState(undefined)
@@ -77,6 +77,15 @@ const index = ({users}) => {
  
   const onFinish = (values: any) => {
     console.log('values',values);
+    //用 dispatch 沟通 model异步effect 
+    const id = record.id;
+    dispatch({
+      type: 'users/edit',
+      payload: {
+        id,
+        values
+      }
+    })
   };
 
   return (

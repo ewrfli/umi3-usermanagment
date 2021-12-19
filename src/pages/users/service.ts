@@ -14,3 +14,18 @@ export const getRemoteList = async params => {
     console.log(error)
   })
 }
+
+export const editRecord = async ({id,values}) => {
+
+  return request(`/api/list/${id}`, { //配置代理  接口原地址http://localhost:3001/list 
+    method: 'put',
+    data: values
+  })
+  .then(function(response) {
+    console.log('editRecord response', response);
+    return response;
+  })
+  .catch(function(error) {
+    console.log(error)
+  })
+}
