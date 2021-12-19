@@ -1,6 +1,6 @@
 // @flow 
 import React, { useState } from 'react';
-import { Table, Tag, Space  } from 'antd';
+import { Table, Tag, Space, Popconfirm  } from 'antd';
 import { connect } from 'umi';
 import UserModal from './components/UserModal'
 type Props = {
@@ -56,13 +56,22 @@ const index = ({users, dispatch}) => {
           <a onClick={ ()=> {
             editeHandler(record);
           }}>Edit</a>
-          <a>Delete</a>
+          
+          <Popconfirm
+            title="Are you sure to delete this task?"
+            onConfirm={confirm}
+            okText="Yes"
+            cancelText="No"
+          >
+            <a>Delete</a>
+          </Popconfirm>
         </Space>
       ),
     },
   ];
-  
-
+  const confirm = () => {
+    console.log('confirm')
+  }
   const editeHandler = (record) => { // hook: modalVisible
     setModalVisible(true);
     console.log(record)
