@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
 
 const UserModal = (props) => { //props是只读
-  const {visible, record, closeHandler } = props; //下面可以省略props
+  const {visible, record, closeHandler, onFinish } = props; //下面可以省略props
 
   const [isModalVisible, setIsModalVisible] = useState(true);
   // const showModal = () => {
@@ -16,6 +16,17 @@ const UserModal = (props) => { //props是只读
   // const handleCancel = () => {
   //   setIsModalVisible(false);
   // };
+
+  const onOk = () => {
+    form.submit();
+  };
+
+  // const onFinish = (values: any) => {
+  //   console.log(values);
+  // };
+  const onFinishFailed = (errorInfo: any) => {
+    console.log(errorInfo);
+  };
   const [form] = Form.useForm();
  
   useEffect( ()=>{
@@ -25,12 +36,14 @@ const UserModal = (props) => { //props是只读
 
   return (
     <>
-      <Modal title="Basic Modal" visible={props.visible} onOk={props.handleOk} onCancel={props.handleCancel} forceRender>
+      <Modal title="Basic Modal" visible={props.visible} onOk={onOk} onCancel={props.handleCancel} forceRender>
         {/* <p>{JSON.stringify(props.record)}</p> */}
         <Form
           form={form}
-          name="basic"
+          name="basic"       
           initialValues={ props.record }
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
         >
           <Form.Item
             label="Name"

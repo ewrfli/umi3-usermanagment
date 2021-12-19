@@ -75,10 +75,22 @@ const index = ({users}) => {
     setModalVisible(false);
   }
  
+  const onFinish = (values: any) => {
+    console.log('values',values);
+  };
+
   return (
     <div className='lest-table'>
       <Table columns={columns} dataSource={users.length ? users : []} rowKey='key' />
-      <UserModal visible={modalVisible} handleOk={handleOk} handleCancel={handleCancel} record={record}></UserModal>
+      <UserModal 
+        visible={modalVisible} 
+        handleOk={handleOk} 
+        handleCancel={handleCancel} 
+        record={record}
+        onFinish={onFinish}
+      >
+
+      </UserModal>
     </div>
     
   );
