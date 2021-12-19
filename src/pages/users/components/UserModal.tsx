@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
 
 const UserModal = (props) => { //props是只读
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const {visible, record, closeHandler } = props; //下面可以省略props
 
+  const [isModalVisible, setIsModalVisible] = useState(true);
   // const showModal = () => {
   //   setIsModalVisible(true);
   // };
@@ -19,7 +20,7 @@ const UserModal = (props) => { //props是只读
  
   useEffect( ()=>{
     form.setFieldsValue(props.record)
-  }, [props.visible] )  //props.visible有变化 才执行 form.setFieldsValue(props.record)  相当于mount
+  }, [props.visible] )  //props.visible有变化 才执行 form.setFieldsValue(props.record)  相当于mount 第二个参数可以是数组
 
 
   return (
